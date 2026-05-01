@@ -1,34 +1,38 @@
-@if (film()) {
+@if (film(); as selectedFilm) {
 
   <button class="back" routerLink="/">
     ← Back
   </button>
 
-
   <div class="detail">
 
-    <img [src]="film()?.posterUrl" alt="{{ film()?.title }}" />
+    <img [src]="selectedFilm.posterUrl" [alt]="selectedFilm.title" />
 
     <div class="info">
-      <h1>{{ film()?.title }}</h1>
+      <h1>{{ selectedFilm.title }}</h1>
 
       <p class="meta">
-        {{ film()?.year }} | {{ film()?.genre }}
+        {{ selectedFilm.year }} | {{ selectedFilm.genre }}
       </p>
 
       <p class="rating">
-        ⭐ {{ film()?.rating }}
+        ⭐ {{ selectedFilm.rating }}
       </p>
 
       <p class="duration">
-        ⏱ {{ film()!.duration | duration }}
+        ⏱ {{ selectedFilm.duration | duration }}
       </p>
 
       <p class="desc">
-        {{ film()?.description }}
+        {{ selectedFilm.description }}
       </p>
     </div>
 
   </div>
 
+}
+@if (film(); as selectedFilm) {
+
+} @else {
+  <p>Film not found</p>
 }

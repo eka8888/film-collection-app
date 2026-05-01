@@ -1,8 +1,9 @@
 
 <input
+  #searchInput
   type="text"
   placeholder="Search films..."
-  (input)="onSearch($event.target.value)"
+  (input)="onSearch(searchInput.value)"
   appAutofocus
 />
 

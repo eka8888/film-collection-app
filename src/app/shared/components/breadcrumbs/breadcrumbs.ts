@@ -1,10 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FilmService } from '../../../core/services/film.service';
 import { Crumb } from '../../models/crumb.models';
-
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -13,34 +10,44 @@ import { Crumb } from '../../models/crumb.models';
   templateUrl: './breadcrumbs.html',
   styleUrl: './breadcrumbs.css',
 })
-export class Breadcrumbs { 
+export class Breadcrumbs {
 
   private router = inject(Router);
   private filmService = inject(FilmService);
 
   private currentUrl = signal(this.router.url);
 
-
   private homeCrumb: Crumb = { label: 'Home', link: '/' };
 
   constructor() {
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd),
-        takeUntilDestroyed()
-      )
-      .subscribe(() => {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
         this.currentUrl.set(this.router.url);
-      });
+      }
+    });
   }
+
+
+  private getFilmId(url: string): number | null {
+    const segments = url.split('/');
+
+    if (segments.length >= 3 && segments[1] === 'film') {
+      return Number(segments[2]);
+    }
+
+    return null;
+  }
+
 
   crumbs = computed<Crumb[]>(() => {
     const url = this.currentUrl();
 
+   
     if (url === '/') return [];
 
-    if (url.startsWith('/film/')) {
-      const id = Number(url.split('/')[2]);
+    const id = this.getFilmId(url);
+
+    if (id !== null) {
       const film = this.filmService.getById(id);
 
       return [

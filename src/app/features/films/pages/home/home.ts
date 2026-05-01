@@ -18,9 +18,9 @@ export class Home {
 
   films = this.filmService.filteredFilms;
 
-  onSearch(value: string) {
-    this.filmService.setSearch(value);
-  }
+onSearch(value: string) {
+  this.filmService.setSearch(value);
+}
 
   onFavorite(id: number) {
     this.filmService.toggleFavorite(id);

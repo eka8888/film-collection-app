@@ -1,10 +1,12 @@
-<div class="card" [routerLink]="['/film', film().id]">
+<div class="card">
 
-  <img [src]="film().posterUrl" alt="{{ film().title }}" />
+  <div class="card-body" [routerLink]="['/film', film().id]">
+    <img [src]="film().posterUrl" [alt]="film().title" />
 
-  <h3>{{ film().title }}</h3>
-  <p>{{ film().year }} | {{ film().genre }}</p>
-  <p>⭐ {{ film().rating }}</p>
+    <h3>{{ film().title }}</h3>
+    <p>{{ film().year }} | {{ film().genre }}</p>
+    <p>⭐ {{ film().rating }}</p>
+  </div>
 
   <button (click)="onFavoriteClick($event)">
     {{ film().isFavorite ? 'Remove from favorites' : 'Add to favorites' }}

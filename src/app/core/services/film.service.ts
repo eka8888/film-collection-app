@@ -13,7 +13,7 @@ export class FilmService {
 
   filteredFilms = computed(() => {
     const term = this.searchTerm().trim().toLowerCase();
-
+ if (!term) return this.films();
     return this.films().filter(film =>
       film.title.toLowerCase().includes(term)
     );
