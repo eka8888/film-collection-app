@@ -1,0 +1,13 @@
+<div class="card" [routerLink]="['/film', film().id]">
+
+  <img [src]="film().posterUrl" alt="{{ film().title }}" />
+
+  <h3>{{ film().title }}</h3>
+  <p>{{ film().year }} | {{ film().genre }}</p>
+  <p>⭐ {{ film().rating }}</p>
+
+  <button (click)="onFavoriteClick($event)">
+    {{ film().isFavorite ? 'Remove from favorites' : 'Add to favorites' }}
+  </button>
+
+</div>

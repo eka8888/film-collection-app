@@ -1,0 +1,29 @@
+
+<input
+  type="text"
+  placeholder="Search films..."
+  (input)="onSearch($event.target.value)"
+  appAutofocus
+/>
+
+
+@if (films().length > 0) {
+
+  <div class="grid">
+
+    @for (film of films(); track film.id) {
+
+      <app-film-card
+        [film]="film"
+        (favoriteClick)="onFavorite($event)"
+      />
+
+    }
+
+  </div>
+
+} @else {
+
+  <p>Nothing found</p>
+
+}

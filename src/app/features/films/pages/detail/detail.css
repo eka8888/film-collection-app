@@ -1,0 +1,89 @@
+:host {
+  display: block;
+  padding: 40px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f0f1a, #050510);
+  color: white;
+}
+
+/* 🔙 back */
+.back {
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 30px;
+  color: #aaa;
+}
+
+.breadcrumbs a {
+  color: #ff416c;
+  text-decoration: none;
+}
+
+/* 🎬 layout */
+.detail {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+/* 🎥 poster */
+.detail img {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+
+.detail img:hover {
+  transform: scale(1.05);
+}
+
+/* 📄 info */
+.info {
+  max-width: 600px;
+}
+
+/* 🎯 title */
+.info h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* meta */
+.meta {
+  color: #bbb;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* ⭐ rating */
+.rating {
+  color: #ffd54f;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ⏱ duration */
+.duration {
+  color: #ff8a65;
+  margin-bottom: 20px;
+}
+
+/* 📖 description */
+.desc {
+  line-height: 1.7;
+  font-size: 16px;
+  color: #ddd;
+}

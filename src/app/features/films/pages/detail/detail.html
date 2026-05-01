@@ -1,0 +1,34 @@
+@if (film()) {
+
+  <button class="back" routerLink="/">
+    ← Back
+  </button>
+
+
+  <div class="detail">
+
+    <img [src]="film()?.posterUrl" alt="{{ film()?.title }}" />
+
+    <div class="info">
+      <h1>{{ film()?.title }}</h1>
+
+      <p class="meta">
+        {{ film()?.year }} | {{ film()?.genre }}
+      </p>
+
+      <p class="rating">
+        ⭐ {{ film()?.rating }}
+      </p>
+
+      <p class="duration">
+        ⏱ {{ film()!.duration | duration }}
+      </p>
+
+      <p class="desc">
+        {{ film()?.description }}
+      </p>
+    </div>
+
+  </div>
+
+}
